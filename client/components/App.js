@@ -27,6 +27,7 @@ import Form from "./Form"
 import SurveyList from "./SurveyList"
 import SurveyDetail from "./SurveyDetail"
 import EditSurvey from "./EditSurvey"
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react"
 
 const App = () => {
   const classes = useStyles()
@@ -35,6 +36,7 @@ const App = () => {
       <>
         <CssBaseline />
         <Header />
+        <AmplifySignOut />
         {/* Switch will match the first path that matches and nothing after */}
         <Switch>
           <Route exact path="/" component={Main}></Route>
@@ -48,4 +50,4 @@ const App = () => {
   )
 }
 
-export default App
+export default withAuthenticator(App)

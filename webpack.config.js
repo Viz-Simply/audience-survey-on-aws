@@ -10,7 +10,17 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(js)$/, use: "babel-loader" },
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: "babel-loader",
+      },
       {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
