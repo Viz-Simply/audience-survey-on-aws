@@ -13,6 +13,7 @@ app.use(express.json()) // gets us access to req.body
 // create a survey
 app.post("/surveys", async (req, res) => {
   try {
+    //console.log("Request body ", req.body)
     const {
       name,
       division,
@@ -40,7 +41,7 @@ app.post("/surveys", async (req, res) => {
 
     res.json(newSurvey.rows[0])
   } catch (err) {
-    console.error(err.message)
+    console.error(err)
   }
 })
 
@@ -76,12 +77,13 @@ app.put("/surveys/:id", async (req, res) => {
 
     res.json("Survey was updated!")
   } catch (err) {
-    console.error(err.message)
+    console.error(err)
   }
 })
 
 // get a survey
 app.get("/surveys/:id", async (req, res) => {
+  //console.log("Request body ", req.body)
   try {
     const { id } = req.params
     const survey = await pool.query(
@@ -96,6 +98,7 @@ app.get("/surveys/:id", async (req, res) => {
 
 // get all surveys
 app.get("/surveys", async (req, res) => {
+  //console.log("Request body ", req.body)
   try {
     const allSurveys = await pool.query("SELECT * FROM audience_survey")
     res.json(allSurveys.rows)
@@ -105,7 +108,7 @@ app.get("/surveys", async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Server has started on port ${port}`)
+  //console.log(`Server has started on port ${port}`)
 })
 
 // delete a survey

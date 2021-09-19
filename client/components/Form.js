@@ -46,6 +46,7 @@ const Form = (props) => {
   }
 
   const handleSubmit = (evt) => {
+    console.log("Form submitted.")
     evt.preventDefault()
 
     let data = { formValues }
